@@ -1,0 +1,16 @@
+[package]
+name = "done-gtk4"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[features]
+probe = []
+
+[target.'cfg(target_os = "linux")'.dependencies]
+done-core = { path = "../done-core" }
+# v4_10: GtkAccessible label/relation bindings (GTK 4.10 or newer).
+gtk4 = { version = "0.11.5", default-features = false, features = ["v4_10"] }
+

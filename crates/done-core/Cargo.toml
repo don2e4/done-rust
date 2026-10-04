@@ -1,0 +1,11 @@
+[package]
+name = "done-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+# Flexbox only: no grid, block, float, calc, parsing, or TaffyTree storage.
+taffy = { version = "0.14.0", default-features = false, features = ["std", "flexbox"] }

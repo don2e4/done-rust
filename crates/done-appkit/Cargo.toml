@@ -1,0 +1,52 @@
+[package]
+name = "done-appkit"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[target.'cfg(target_os = "macos")'.dependencies]
+done-core = { path = "../done-core" }
+objc2 = "0.6"
+objc2-foundation = { version = "0.3", default-features = false, features = [
+    "std",
+    "NSArray",
+    "NSDate",
+    "NSEnumerator",
+    "NSGeometry",
+    "NSNotification",
+    "NSObjCRuntime",
+    "NSObject",
+    "NSRunLoop",
+    "NSString",
+] }
+objc2-app-kit = { version = "0.3", default-features = false, features = [
+    "std",
+    "NSAccessibilityProtocols",
+    "NSApplication",
+    "NSButton",
+    "NSCell",
+    "NSClipView",
+    "NSControl",
+    "NSEvent",
+    "NSFont",
+    "NSGraphics",
+    "NSGraphicsContext",
+    "NSImage",
+    "NSImageView",
+    "NSLayoutConstraint",
+    "NSPopUpButton",
+    "NSProgressIndicator",
+    "NSResponder",
+    "NSRunningApplication",
+    "NSScrollView",
+    "NSScroller",
+    "NSSlider",
+    "NSText",
+    "NSTextField",
+    "NSView",
+    "NSWindow",
+    # CGFloat-based methods such as fonts and scroller widths.
+    "objc2-core-foundation",
+] }

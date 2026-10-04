@@ -1,0 +1,29 @@
+[workspace]
+members = [
+    "crates/done",
+    "crates/done-core",
+    "crates/done-gtk4",
+    "crates/done-win32",
+    "crates/done-appkit",
+]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.92"
+license = "Unlicense"
+repository = "https://github.com/don2e4/done-rust"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+debug = 0
+
+[profile.probe]
+inherits = "release"

@@ -1,0 +1,32 @@
+[package]
+name = "done"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[features]
+default = ["native"]
+# Each backend is a target-specific dependency: only the host's is compiled.
+native = ["gtk4", "win32", "appkit"]
+gtk4 = ["dep:done-gtk4"]
+win32 = ["dep:done-win32"]
+appkit = ["dep:done-appkit"]
+probe = ["done-gtk4?/probe"]
+
+[dependencies]
+done-core = { path = "../done-core" }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+done-gtk4 = { path = "../done-gtk4", optional = true }
+
+[target.'cfg(windows)'.dependencies]
+done-win32 = { path = "../done-win32", optional = true }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+done-appkit = { path = "../done-appkit", optional = true }
+
+[target.'cfg(target_os = "linux")'.dev-dependencies]
+gtk4 = { version = "0.11.5", default-features = false }
+
